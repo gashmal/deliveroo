@@ -1,7 +1,10 @@
 # Deliveroo project
 
+<<<<<<< HEAD
 Deeeeliver ou, deeeeliveroo, deeeeliveroo, deliveroo
 
+=======
+>>>>>>> c792add01b781cd7a8328f2b89e8debd46049bf9
 ## Quick start
 
 ```bash
