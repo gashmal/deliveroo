@@ -111,7 +111,7 @@ class Form extends React.Component {
 						<input
 							className="onSubmit"
 							type="submit"
-							value="💸 Comfirmer et Payer !"
+							value="💸 Confirmer et Payer !"
 						/>
 					</div>
 				</form>
