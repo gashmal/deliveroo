@@ -6,6 +6,7 @@
     position: sticky;
     top: 0;
     box-shadow: 0px 2px 2px 0px rgba(130, 130, 130, 0.26);
+    z-index: 12;
 }
 
 .logo {
@@ -90,7 +91,7 @@ img {
 }
 
 .between {
-    align-content: space-between;
+    justify-content: space-between;
 }
 
 ul {
@@ -164,12 +165,17 @@ img {
 
 .plusminus:focus {
     outline: none;
-    border: none;
+
 }
 
 .flex1 {
     flex: 1;
 }
+
+.flex2 {
+    flex: 2;
+}
+
 
 .flex3 {
     flex: 3;
@@ -207,4 +213,99 @@ img {
 
 .colorGray {
     color: lightgray;
+}
+
+.panier:hover {
+    cursor: pointer;
+}
+
+.allPage {
+    min-height: calc(100vh - 62px);
+}
+
+.form {
+    margin: 18px 0;
+    border-radius: 15px;
+    box-shadow: 3px 4px 8px -1px rgba(124, 122, 122, 0.32);
+    overflow: hidden;
+    z-index: 0;
+}
+
+.center {
+    max-width: 80%;
+    margin: auto;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.lilPad {
+    padding: 9px 40px;
+}
+
+.lilMargin {
+    margin: 20px
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+}
+
+.halfForm {
+    width: calc(50% - 1px);
+}
+
+.all {
+    width: 100%;
+}
+
+.noTop {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+input {
+    padding: 10px;
+    margin: 8px;
+    border-radius: 7px;
+    border: 1px solid lightgray;
+}
+
+input:focus {
+    outline: none;
+    border: 1.2px solid #00ccbc;
+    box-shadow: 3px 4px 3px -1px rgba(124, 122, 122, 0.22);
+}
+
+.onSubmit {
+    box-sizing: border-box;
+    width: 100%;
+    height: 60px;
+    padding: 20px;
+    background-color: #00ccbc;
+    border: none;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 15px;
+    box-shadow: 0px 3px 4px -1px rgba(124, 122, 122, 0.22);
+}
+
+.onSubmit:hover {
+    cursor: pointer;
+}
+
+label {
+    color: gray;
+}
+
+::placeholder {
+    color: lightgray;
+}
+
+.nohoover:hover {
+    cursor: default;
+    outline: none;
 }

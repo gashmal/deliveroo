@@ -4,7 +4,7 @@ class Popular extends React.Component {
 	render() {
 		if (this.props.pop) {
 			return (
-				<span className="pop" role="img">
+				<span className="pop" role="img" aria-label="star">
 					⭐ Populaire
 				</span>
 			);

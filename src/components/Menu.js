@@ -10,7 +10,6 @@ class Menu extends React.Component {
 	};
 
 	componentDidMount() {
-		console.log("Did Mount");
 		axios.get("https://deliveroo-api.now.sh/menu").then(response => {
 			this.setState({
 				WhatsOnTheMenu: response.data.menu,
@@ -23,7 +22,10 @@ class Menu extends React.Component {
 		return (
 			<div>
 				<Restaurant resto={this.state.restau} />
-				<TheMenu menu={this.state.WhatsOnTheMenu} />
+				<TheMenu
+					resto={this.state.restau.name}
+					menu={this.state.WhatsOnTheMenu}
+				/>
 			</div>
 		);
 	}

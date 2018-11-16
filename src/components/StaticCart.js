@@ -1,35 +1,21 @@
 import React from "react";
-import { Link } from "react-router-dom";
 
-class CheckThisOut extends React.Component {
+class StaticCart extends React.Component {
 	render() {
 		const CheckYoSelf = [];
 		let SousTotal = 0;
+		if (this.props.cart === undefined) {
+			return null;
+		}
 		for (let i = 0; i < this.props.cart.length; i++) {
 			SousTotal +=
 				Number(this.props.cart[i].price) * Number(this.props.cart[i].quantity);
 			CheckYoSelf.push(
 				<li className="flex-row between reset fadeInRightBig" key={i}>
 					<div className="flex1">
-						<button
-							className="plusminus"
-							onClick={() => {
-								this.props.onDecrement(this.props.cart[i].titre);
-							}}
-						>
-							-
-						</button>
 						<span className="colorGray">
-							{" " + this.props.cart[i].quantity + " "}
+							{"x" + this.props.cart[i].quantity + " "}
 						</span>
-						<button
-							className="plusminus"
-							onClick={() => {
-								this.props.onIncrement(this.props.cart[i].titre);
-							}}
-						>
-							+
-						</button>
 					</div>
 					<div className="flex3">{this.props.cart[i].titre}</div>
 					<div className="flex1 rightOn">
@@ -43,15 +29,8 @@ class CheckThisOut extends React.Component {
 
 		return (
 			<div className="white-back check bounceInUp">
-				<Link
-					to={{
-						pathname: "/LetThemPay",
-						cart: this.props.cart,
-						resto: this.props.resto
-					}}
-				>
-					<button className="panier">Valider mon panier</button>
-				</Link>
+				<button className="panier nohoover">Mon panier</button>
+
 				<div>
 					<ul className="putItOnTheSide bottom">{CheckYoSelf}</ul>
 				</div>
@@ -79,4 +58,4 @@ class CheckThisOut extends React.Component {
 	}
 }
 
-export default CheckThisOut;
+export default StaticCart;

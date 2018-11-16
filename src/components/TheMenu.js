@@ -12,6 +12,7 @@ class TheMenu extends React.Component {
 		if (this.state.WhatsOnMyCart.length > 0) {
 			return (
 				<CheckThisOut
+					resto={this.props.resto}
 					cart={this.state.WhatsOnMyCart}
 					onIncrement={titre => {
 						let newCart = [...this.state.WhatsOnMyCart];
@@ -51,7 +52,9 @@ class TheMenu extends React.Component {
 		for (let i = 0; i < Object.keys(this.props.menu).length; i++) {
 			let key = Object.keys(this.props.menu)[i];
 			if (this.props.menu[key].length > 0) {
-				menuItems.push(<Title text={Object.keys(this.props.menu)[i]} />);
+				menuItems.push(
+					<Title key={"title" + i} text={Object.keys(this.props.menu)[i]} />
+				);
 				const menuBayes = [];
 				for (let j = 0; j < this.props.menu[key].length; j++) {
 					let itemArray = Object.entries(this.props.menu[key][j]);
@@ -75,6 +78,7 @@ class TheMenu extends React.Component {
 					}
 					menuBayes.push(
 						<Card
+							key={j}
 							handleClick={() => {
 								let newCart = [...this.state.WhatsOnMyCart];
 								let ilEstAl = false;
@@ -106,7 +110,11 @@ class TheMenu extends React.Component {
 						/>
 					);
 				}
-				menuItems.push(<div className="flex-row">{menuBayes}</div>);
+				menuItems.push(
+					<div key={"truc" + i} className="flex-row">
+						{menuBayes}
+					</div>
+				);
 			}
 		}
 
