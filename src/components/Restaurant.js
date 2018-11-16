@@ -4,7 +4,7 @@ import RestoCard from "./RestoCard";
 class Restaurant extends React.Component {
 	render() {
 		return (
-			<div className="container">
+			<div className="container taille">
 				<RestoCard
 					title={this.props.resto.name}
 					description={this.props.resto.description}

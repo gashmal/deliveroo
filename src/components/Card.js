@@ -14,7 +14,7 @@ class Card extends React.Component {
 				}}
 				className="flex-row half white-back"
 			>
-				<div className="left-col">
+				<div className="left-col petit">
 					<Title text={this.props.title} />
 					<Description text={this.props.description} />
 					<Price price={this.props.price} />

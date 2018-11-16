@@ -8,6 +8,43 @@ class TheMenu extends React.Component {
 		WhatsOnMyCart: []
 	};
 
+	renderCheckout() {
+		if (this.state.WhatsOnMyCart.length > 0) {
+			return (
+				<CheckThisOut
+					cart={this.state.WhatsOnMyCart}
+					onIncrement={titre => {
+						let newCart = [...this.state.WhatsOnMyCart];
+						for (let i = 0; i < newCart.length; i++) {
+							if (newCart[i].titre === titre) {
+								newCart[i].quantity++;
+								this.setState({
+									WhatsOnMyCart: newCart
+								});
+							}
+						}
+					}}
+					onDecrement={titre => {
+						let newCart = [...this.state.WhatsOnMyCart];
+						for (let i = 0; i < newCart.length; i++) {
+							if (newCart[i].titre === titre && newCart[i].quantity > 0) {
+								newCart[i].quantity--;
+								if (newCart[i].quantity === 0) {
+									newCart.splice(i, 1);
+								}
+								this.setState({
+									WhatsOnMyCart: newCart
+								});
+							}
+						}
+					}}
+				/>
+			);
+		} else {
+			return null;
+		}
+	}
+
 	render() {
 		const menuItems = [];
 
@@ -78,33 +115,7 @@ class TheMenu extends React.Component {
 				<div className="container">
 					<div className="flex-row">
 						<div className="left-col">{menuItems}</div>
-						<div className="right-col">
-							<CheckThisOut
-								cart={this.state.WhatsOnMyCart}
-								onIncrement={titre => {
-									let newCart = [...this.state.WhatsOnMyCart];
-									for (let i = 0; i < newCart.length; i++) {
-										if (newCart[i].titre === titre) {
-											newCart[i].quantity++;
-											this.setState({
-												WhatsOnMyCart: newCart
-											});
-										}
-									}
-								}}
-								onDecrement={titre => {
-									let newCart = [...this.state.WhatsOnMyCart];
-									for (let i = 0; i < newCart.length; i++) {
-										if (newCart[i].titre === titre && newCart[i].quantity > 0) {
-											newCart[i].quantity--;
-											this.setState({
-												WhatsOnMyCart: newCart
-											});
-										}
-									}
-								}}
-							/>
-						</div>
+						<div className="right-col">{this.renderCheckout()}</div>
 					</div>
 				</div>
 			</div>

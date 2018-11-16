@@ -1,7 +1,7 @@
 import React from "react";
 import Title from "./Title";
 import Description from "./Description";
-import Cover from "./Cover";
+import RestoCover from "./RestoCover";
 
 class RestoCard extends React.Component {
 	render() {
@@ -12,7 +12,7 @@ class RestoCard extends React.Component {
 					<Description text={this.props.description} />
 				</div>
 				<div className="right-col">
-					<Cover url={this.props.url} alt={this.props.title} />
+					<RestoCover url={this.props.url} alt={this.props.title} />
 				</div>
 			</div>
 		);
