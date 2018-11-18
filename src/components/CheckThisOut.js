@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 
 class CheckThisOut extends React.Component {
 	render() {
+		sessionStorage.setItem("savedCart", JSON.stringify(this.props.cart));
 		const CheckYoSelf = [];
 		let SousTotal = 0;
 		for (let i = 0; i < this.props.cart.length; i++) {

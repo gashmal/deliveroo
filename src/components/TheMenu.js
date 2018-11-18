@@ -8,6 +8,13 @@ class TheMenu extends React.Component {
 		WhatsOnMyCart: []
 	};
 
+	componentDidMount() {
+		sessionStorage.getItem("savedCart") &&
+			this.setState({
+				WhatsOnMyCart: JSON.parse(sessionStorage.getItem("savedCart"))
+			});
+	}
+
 	renderCheckout() {
 		if (this.state.WhatsOnMyCart.length > 0) {
 			return (
