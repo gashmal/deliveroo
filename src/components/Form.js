@@ -13,7 +13,7 @@ class Form extends React.Component {
 	};
 
 	handleSubmit = event => {
-		alert("A truc was submitted: " + this.state);
+		alert("A truc was submitted: " + JSON.stringify(this.state));
 		console.log(this.state);
 
 		event.preventDefault(); // cette ligne est indispensable pour empêcher le navigateur de changer de page automatiquement lorsque le formulaire est soumis.
