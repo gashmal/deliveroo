@@ -1,5 +1,25 @@
 import React from "react";
 import Title from "./Title";
+import axios from "axios";
+import { CardElement, injectStripe } from "react-stripe-elements";
+
+var style = {
+	base: {
+		color: "#32325d",
+		lineHeight: "18px",
+		fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
+		fontSmoothing: "antialiased",
+		fontSize: "16px",
+		"::placeholder": {
+			color: "#aab7c4"
+		},
+		border: "solid 1px #333333"
+	},
+	invalid: {
+		color: "#fa755a",
+		iconColor: "#fa755a"
+	}
+};
 
 class Form extends React.Component {
 	state = {
@@ -17,6 +37,30 @@ class Form extends React.Component {
 		console.log(this.state);
 
 		event.preventDefault(); // cette ligne est indispensable pour empêcher le navigateur de changer de page automatiquement lorsque le formulaire est soumis.
+
+		this.props.stripe
+			.createToken({
+				name: "Tovo Mymen",
+				address_line1: this.state.adresse,
+				address_city: this.state.city,
+				address_zip: this.state.zip
+			})
+			.then(({ token }) => {
+				console.log("Token:", token);
+				// On poste l'objet Token à notre back-end
+				axios
+					.post("https://763118a0.ngrok.io/api/", {
+						token,
+						price: this.props.price
+					})
+					.then(function(response) {
+						console.log(response.data);
+						alert(response.data);
+					})
+					.catch(function(error) {
+						console.log(error);
+					});
+			});
 	};
 
 	handleInputChange = event => {
@@ -107,6 +151,17 @@ class Form extends React.Component {
 							/>
 						</label>
 					</div>
+					<div style={{ width: "100%" }}>
+						<div
+							style={{
+								border: "solid 1px #333333",
+								padding: 10,
+								borderRadius: 3
+							}}
+						>
+							<CardElement style={style} />
+						</div>
+					</div>
 					<div className="flex-row">
 						<input
 							className="onSubmit"
@@ -120,4 +175,4 @@ class Form extends React.Component {
 	}
 }
 
-export default Form;
+export default injectStripe(Form);

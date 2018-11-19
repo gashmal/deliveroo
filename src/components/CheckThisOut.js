@@ -48,7 +48,8 @@ class CheckThisOut extends React.Component {
 					to={{
 						pathname: "/LetThemPay",
 						cart: this.props.cart,
-						resto: this.props.resto
+						resto: this.props.resto,
+						price: (SousTotal + 2.5).toFixed(2)
 					}}
 				>
 					<button className="panier">Valider mon panier</button>
